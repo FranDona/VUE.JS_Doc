@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js 3 Example</title>
+  <!-- Incluye Vue.js desde CDN -->
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+<div id="app">
+  <!-- Contenido del componente -->
+  <div v-if="dataLoaded">
+    <!-- Contenido que se mostrará cuando los datos estén cargados -->
+    <h1>{{ responseData.title }}</h1>
+    <p>{{ responseData.content }}</p>
+  </div>
+  <div v-else>
+    Cargando datos...
+  </div>
+</div>
+
+<script>
+// Define el componente Vue
+const app = Vue.createApp({
+  data() {
+    return {
+      dataLoaded: false,
+      responseData: null
+    };
+  },
+  mounted() {
+    // Simula la carga de datos desde una API después de un breve retraso
+    setTimeout(() => {
+      this.responseData = {
+        title: 'Título de ejemplo',
+        content: 'Contenido de ejemplo'
+      };
+      this.dataLoaded = true; // Cambia el estado a true después de cargar los datos
+    }, 2000);
+  }
+});
+
+// Monta el componente en el elemento con id "app"
+app.mount('#app');
+</script>
+
+</body>
+</html>

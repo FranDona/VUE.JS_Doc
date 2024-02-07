@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>v-show vs v-if</title>
+</head>
+<body>
+<h1>Ejemplo: v-show vs v-if</h1>
+
+<div id="app">
+  <p>Establezca la propiedad de datos 'visualizar' en 'false' y vuelva 
+    a ejecutar el código. Haga clic con el botón derecho en este elemento 
+    p verde, elija 'Inspeccionar elemento' y podrá ver 
+    que el elemento div con v-show todavía existe, solo es la propiedad 
+    de visualización CSS la que se establece en 'none', y el div con v-if 
+    se destruye.</p>
+  <div v-show="visualizar">Div tag with v-show</div>
+  <div v-if="visualizar">Div tag with v-if</div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        visualizar: true
+      }
+    }
+  })
+ app.mount('#app')
+</script>
+
+</body>
+</html>
+
+<!-- **v-show:** aunque el elemento v-show se haya oculta sigue existiendo en vez de destruirlo
+de esta manera, si estamos en una página que cambie mucho su estado sera preferible para mejorar
+el rendimiento.
+Si estamos en una página que no cambia mucho el estado podremos usar v-if -->

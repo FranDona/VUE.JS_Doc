@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js v-model Ejemplos</title>
+</head>
+<body>
+
+  <div id="app">
+    <img v-bind:src="url">
+    <a v-bind:href="link">Link</a>
+  </div>
+
+  
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        url: 'https://shorturl.at/ahGK5',
+        link: 'https://shorturl.at/lwG06',
+      }
+    }
+  })
+  app.mount('#app');
+  </script>
+
+</body>
+</html>
+
+<!--  v-bind se esta usando para enlazar dinámicamente los valores de las 
+  propiedades url y link a los atributos src y href en los 
+  elementos <img> y <a>. Esto permite que la imagen y el 
+    enlace cambien de manera reactiva según los datos definidos 
+    en tu instancia de Vue. -->

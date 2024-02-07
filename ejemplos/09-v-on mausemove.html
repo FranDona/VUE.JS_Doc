@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cambiar color</title>
+  <style>
+    #app > div {
+      width: 200px;
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Ejemplo: Cambiar Color</h1>
+
+<div id="app">
+  <div v-on:mousemove=" valorcolor = Math.floor(Math.random()*360) " v-bind:style=" {backgroundColor: 'hsl('+valorcolor+',60%,60%)'} "></div>
+  <p><span>backgroundColor: hsl(<strong>{{ valorcolor }}</strong>, 80%, 80%)</span></p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        valorcolor: 50
+      }
+    }
+  })
+ app.mount('#app')
+</script>
+
+</body>
+</html>
+
+<!-- v-on:mausemove: Hemos creado una estancia llamada app 
+con un valor asociado, dentro del div hemos creado
+el evento de mausemove, cuando el valorcolor cambia,
+hace que cambie el valor hsl de fondo, por lo que cambia
+de color. Dependiendo del valor que establezacamos en
+la estancia sera el color predeterminado con el que cargara la página -->

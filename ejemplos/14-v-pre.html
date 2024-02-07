@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo v-pre</title>
+</head>
+<body>
+
+    <h1>Ejemplo: v-pre</h1>
+    
+    <div id="app" v-pre>
+      {{ mensaje }}
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            mensaje: 'Este es un mensaje que no será compilado por Vue.'
+          };
+        }
+      });
+
+      app.mount('#app');
+    </script>
+</body>
+</html>
+
+<!-- v-pre en Vue desactiva la compilación del contenido
+dentro del elemento. Se usa cuando se desea 
+mostrar código Vue sin procesamiento. -->

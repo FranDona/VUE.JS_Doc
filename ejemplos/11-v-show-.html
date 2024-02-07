@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>v-show</title>
+  <style>
+    #app div {
+      width: 100px;
+      padding: 20px;
+      background-color: rgb(63, 0, 253);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Ejemplo: v-show</h1>
+
+<div id="app">
+  <p>Cambia el valor de "visibilidad" dentro de la instancia de vue, entre falso y verdadero</p>
+  <div v-show="visibilidad">Este mensaje solo puede verse si "visibilidad" es verdadero </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        visibilidad: true
+      }
+    }
+  })
+app.mount('#app')
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo v-if, v-else-if, v-else</title>
+
+</head>
+<body>
+
+<h2>Venta de Manuales HTML</h2>
+
+<img src="https://shorturl.at/rAENV" alt="manual" width="120" height="135">
+
+<div id="app">
+  <p v-if="contadorManuales>3">
+    En stock
+  </p>
+  <p v-else-if="contadorManuales>0">
+    ¡Quedan muy pocos!
+  </p>
+  <p v-else>
+    Sin stock
+  </p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+    return {
+      contadorManuales: 4
+    }
+    }
+  })
+  app.mount('#app')
+</script>
+
+</body>
+</html>
+
+<!-- v-if, v-else-if, v-else: En este ejemplo del inventario de una tienda
+podemos ver como hemos configurado las 3 directivas para dependiendo del datos
+de salida de la estancia nos de una respuesta diferente  -->

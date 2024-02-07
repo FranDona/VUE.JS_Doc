@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue page</title>
+</head>
+<body>
+
+<h1>Ejemplo 'v-for' Para crear listas</h1>
+
+<p>En este ejemplo, 'v-for' crea un 'li' etiqueta con el nombre del manual para cada manual en el array de la instancias de Vue.
+
+</p>
+
+<div id="app">
+
+  <ol>
+    <li v-for="x in manyFoods">{{ x }}</li>
+  </ol>
+
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const app = Vue.createApp({
+  data() {
+    return {
+      manyFoods: [
+        'Manual HTML',
+        'Manual CS',
+        'Manual JavaScript',
+      ]
+    }
+  }
+  })
+  
+  app.mount('#app')
+
+</script>
+
+</body>
+</html>
+
+<!-- v-for:  -->

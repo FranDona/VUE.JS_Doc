@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>v-for con imagenes</title>
+</head>
+<body>
+
+<h1>Ejemplo con 'v-for' para crear imagenes</h1>
+
+<div id="app">
+
+  <div>
+    <img v-for="x in manuales" v-bind:src="x" width="70" height="100">
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+  const app = Vue.createApp({
+  data() {
+    return {
+      manuales: [
+        'https://shorturl.at/rAENV',
+        'https://shorturl.at/ijuvw',
+        'https://shorturl.at/amEI0',
+
+      ]
+    }
+  }
+  })
+  
+  app.mount('#app')
+
+</script>
+
+</body>
+</html>
+
+<!-- v-for: Con esta funcion podremos imprimir en pantalla arrays
+  que declaremos dentro de la instancia de vue, en este caso lo 
+  hemso hecho con un conjunto de imagenes-->

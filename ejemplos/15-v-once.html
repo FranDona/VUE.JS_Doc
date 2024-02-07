@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3 v-once Ejemplo</title>
+  
+</head>
+<body>
+
+<div id="app">
+  <h1 v-once>{{ mensaje }}</h1>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        mensaje: '¡Hola, este mensaje solo se renderizará una vez en Vue 3!'
+      };
+    }
+  });
+  const vm = app.mount('#app');
+</script>
+
+</body>
+</html>
+
+<!-- v-once: Hace que solo se rendirice una vez de manera que si se intentan
+actualizar los datos no cambiaran. Esto puede ser útil cuando tienes 
+partes de tu interfaz de usuario que no necesitan ser reevaluadas 
+en cada cambio de estado, mejorando así el rendimiento al reducir 
+la cantidad de actualizaciones en el DOM. -->

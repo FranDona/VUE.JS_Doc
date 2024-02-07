@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contador de eventos</title>
+</head>
+<body>
+<h1>Ejemplo: Contador de eventos</h1>
+
+<div id="app">
+  <input type="text" v-on:input="contadoreventos++" placeholder="Start writing..">
+  <p>{{ 'Input events occured: '+contadoreventos }}</p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        contadoreventos: 0
+      }
+    }
+  })
+ app.mount('#app')
+</script>
+
+</body>
+</html>
+
+<!-- v-on: El v-on esta escuchando el evento de entrada
+en el campo de texto, el "contadoreventos++" incrementa
+el contador cada vez que ocurre un evento y la respuesta
+de la estancia de vue lo que hacer es mostrar los 
+eventos en pantalla -->

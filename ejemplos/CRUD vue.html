@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="appPacientes" class="container">
+        <!-- Formulario para añadir pacientes -->
+        <section class="form m-5">
+            <form action="" class="text-center">
+                <input v-model="nombre" @keyup.enter="crearPaciente" type="text" class="form-control" placeholder="Nombre">
+                <input v-model="edad" @keyup.enter="crearPaciente" type="number" name="edad" placeholder="Edad" class="form-control">
+                <!-- Botón para añadir -->
+                <input @click="crearPaciente" type="button" value="Añadir" class="btn btn-success">
+            </form>
+        </section>
+        <!-- Tabla donde se muestran los datos -->
+        <section class="data">
+            <caption>Pacientes</caption>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Edad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(paciente, index) in pacientes" :key="paciente.id">
+                        <td>{{ paciente.id }}</td>
+                        <td>
+                            <span v-if="formActualizar && idActualizar == index">
+                                <!-- Formulario para actualizar -->
+                                <input v-model="nombreActualizar" type="text" class="form-control">
+                            </span>
+                            <span v-else>
+                                <!-- Dato nombre -->
+                                {{ paciente.nombre }}
+                            </span>
+                        </td>
+                        <td>
+                            <span v-if="formActualizar && idActualizar == index">
+                                <!-- Formulario para actualizar -->
+                                <input v-model="edadActualizar" type="text" class="form-control">
+                            </span>
+                            <span v-else>
+                                <!-- Dato edad -->
+                                {{ paciente.edad }}
+                            </span>
+                        </td>
+                        <td>
+                            <!-- Botón para guardar la información actualizada -->
+                            <span v-if="formActualizar && idActualizar == index">
+                                <button @click="guardarActualizacion(index)" class="btn btn-success">Guardar</button>
+                            </span>
+                            <span v-else>
+                                <!-- Botón para mostrar el formulario de actualizar -->
+                                <button @click="verFormActualizar(index)" class="btn btn-warning">Actualizar</button>
+                                <!-- Botón para borrar -->
+                                <button @click="borrarPaciente(index)" class="btn btn-danger">Borrar</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    nombre: '',             // Input nombre
+                    edad: '',               // Input edad
+                    formActualizar: false,  // Ver o no ver el formulario de actualizar
+                    idActualizar: -1,       // La posición de tu lista donde te gustaría actualizar
+                    nombreActualizar: '',   // Input nombre dentro del formulario de actualizar
+                    edadActualizar: '',     // Input edad dentro del formulario de actualizar
+                    pacientes: []           // Lista de pacientes
+                };
+            },
+            methods: {
+                crearPaciente() {
+                    // Añadimos a nuestra lista
+                    this.pacientes.push({
+                        id: +new Date(),
+                        nombre: this.nombre,
+                        edad: this.edad
+                    });
+                    // Vaciamos el formulario de añadir
+                    this.nombre = '';
+                    this.edad = '';
+                },
+                verFormActualizar(paciente_id) {
+                    // Antes de mostrar el formulario de actualizar, rellenamos sus campos
+                    this.idActualizar = paciente_id;
+                    this.nombreActualizar = this.pacientes[paciente_id].nombre;
+                    this.edadActualizar = this.pacientes[paciente_id].edad;
+                    // Mostramos el formulario
+                    this.formActualizar = true;
+                },
+                borrarPaciente(paciente_id) {
+                    // Borramos de la lista
+                    this.pacientes.splice(paciente_id, 1);
+                },
+                guardarActualizacion(paciente_id) {
+                    // Ocultamos nuestro formulario de actualizar
+                    this.formActualizar = false;
+                    // Actualizamos los datos
+                    this.pacientes[paciente_id].nombre = this.nombreActualizar;
+                    this.pacientes[paciente_id].edad = this.edadActualizar;
+                }
+            }
+        });
+
+        app.mount('#appPacientes');
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue page</title>
+</head>
+<body>
+
+<h1>Ejemplo Obtener el indice del elemento del arrays con 'v-for'</h1>
+<p>La directiva 'v-for' se utiliza para obtener el índice y el nombre de los manuales de los elementos dentro de la matriz 'manuales' en la instancia de Vue.</p>
+
+<div id="app">
+  <div>
+    <p v-for="(x, index) in manuales">
+      {{ index }}: "{{ x }}" <br>
+    </p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+  data() {
+    return {
+      manuales: [
+        'Manual HTML',
+        'Manual CSS',
+        'Manual JavaScript',
+        'Manual Java',
+        'Manual ',
+      ]
+    }
+  }
+  })
+  app.mount('#app')
+</script>
+
+</body>
+</html>
+
+<!-- v-for: se utiliza para obtener el índice y el nombre 
+  de los elementos dentro de la matriz 'manuales' en la instancia de Vue. -->

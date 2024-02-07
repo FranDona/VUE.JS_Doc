@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js v-model Ejemplos</title>
+</head>
+<body>
+
+<div id="app">
+  <p> De acuerdo! Su nombre es: [{{ nombre }}] y tienes [{{ edad }}] años</p>
+  <br>
+  Digame su nombre <input v-model="nombre" placeholder="Nombre">
+<br><br>
+  Digame su edad <input v-model="edad" placeholder="Edad">
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          nombre: '',
+          edad: '',
+        };
+      }
+    });
+  
+    app.mount('#app');
+  </script>
+
+</body>
+</html>
+
+<!-- v-model en este código establece un enlace bidireccional
+  entre las propiedades nombre y edad en la instancia de Vue 
+  y el valor de un elemento < input > en el HTML. Esto implica 
+  que cualquier cambio en el < input > se reflejará 
+  automáticamente en las propiedades de Vue, y viceversa. 
+  En esencia, v-model simplifica la sincronización automática 
+  entre los datos en el modelo de Vue y los elementos de la 
+  interfaz de usuario. -->
